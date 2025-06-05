@@ -42,17 +42,24 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name:'setup',// This project is used to set up the environment before running tests
+      testMatch: /.*\.setup\.ts/,// Match files that end with .setup.ts
+    },
+    {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['setup'], // Ensure setup is run before this project
+      use: { ...devices['Desktop Chrome'],permissions: ['clipboard-read', 'clipboard-write'] },// Use the Desktop Chrome device configuration. This will allow clipboard access
     },
 
     {
       name: 'firefox',
+      dependencies: ['setup'], // Ensure setup is run before this project
       use: { ...devices['Desktop Firefox'] },
     },
 
     {
       name: 'webkit',
+      dependencies: ['setup'], // Ensure setup is run before this project
       use: { ...devices['Desktop Safari'] },
     },
 
