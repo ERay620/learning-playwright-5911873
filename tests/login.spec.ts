@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test("login test", async ({ page }) => {
   await page.goto("https://practicesoftwaretesting.com/");
-  await page.locator('[data-test="nav-sign-in"]').click();
+  await page.locator('[data-test="nav-sign-in"]').click(); // Click on the Sign In button
   await page
     .locator('[data-test="email"]')
     .fill("customer@practicesoftwaretesting.com");
