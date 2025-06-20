@@ -17,11 +17,11 @@ test.describe("Checkout challenge", async () => {
     await expect(
       page.locator(".step-indicator").filter({ hasText: "2" })
     ).toHaveCSS("background-color", "rgb(51, 153, 51)");
-    await page.getByTestId("address").fill("123 Testing Way");
+    await page.getByTestId("street").fill("123 Testing Way");
     await page.getByTestId("city").fill("Sacramento");
     await page.getByTestId("state").fill("California");
     await page.getByTestId("country").fill("USA");
-    await page.getByTestId("postcode").fill("98765");
+    await page.getByTestId("postal_code").fill("98765");
     await page.getByTestId("proceed-3").click();
     await expect(page.getByTestId("finish")).toBeDisabled();
     await page.getByTestId("payment-method").selectOption("Buy Now Pay Later");
